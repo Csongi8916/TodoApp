@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace TodoApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddAutoMapper(typeof(TodoRepository).Assembly);
             services.AddScoped<ITodoRepository, TodoRepository>();
         }
 
