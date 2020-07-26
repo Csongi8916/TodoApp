@@ -13,6 +13,9 @@ namespace TodoApp.Helpers
         {
             CreateMap<TodoItem, TodoListDto>();
             CreateMap<TodoItem, TodoDetailedDto>();
+
+            CreateMap<TodoListDto, TodoItem>();
+            CreateMap<TodoDetailedDto, TodoItem>();
         }
     }
 }

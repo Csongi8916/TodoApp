@@ -18,7 +18,6 @@ namespace TodoApp.Data
                 var todoItems = JsonConvert.DeserializeObject<List<TodoItem>>(todoData);
                 foreach (var todoItem in todoItems)
                 {
-                    todoItem.Id = Guid.NewGuid().ToString();
                     ctx.Todos.Add(todoItem);
                 }
 
