@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { AppComponent } from './app.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoListResolver } from './resolvers/todo-list.resolver';
 
 export const appRoutes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: TodoListComponent, resolve: { todos: TodoListResolver } },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
