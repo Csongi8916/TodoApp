@@ -1,9 +1,9 @@
 <div
   class="card mb-4"
   [ngClass]="{ 'card-finished': todo.isFinished, 'card-inprogress': !todo.isFinished }"
-  style="width: 18rem;"
+  style="width: 22rem;"
 >
-  <div class="card-body">
+  <div class="card-body text-center">
     <h5 class="card-title">{{ todo.title }}</h5>
     <h6 *ngIf="todo.isFinished" class="card-subtitle mb-3">
       Teljesített
@@ -11,27 +11,25 @@
     <h6 *ngIf="!todo.isFinished" class="card-subtitle mb-3">
       Folyamatban...
     </h6>
-    <!--<svg
-      xmlns="http://www.w3.org/2000/svg"
-      style="margin-right: 10px;"
-      fill="green"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;" height="24" viewBox="0 0 24 24" width="24">
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;" height="24" viewBox="0 0 24 24" width="24">
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-    </svg>-->
-    <a href="#" class="card-link" (click)="goDetails()">Részletek</a>
+    <ul class="list-inline member-icons animate">
+      <li class="list-inline-item">
+        <button class="btn btn-primary" [routerLink]="['/detail', todo.id]">
+          Részletek
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-warning">
+          Módosít
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-danger">
+          Törlés
+        </button>
+      </li>
+    </ul>
+    <!--<a href="#" class="card-link" (click)="goDetails()">Részletek</a>
     <a href="#" class="card-link" (click)="goDetails()">Módosítás</a>
-    <a href="#" class="card-link card-remove-link" (click)="goDetails()">Törlés</a>
+    <a href="#" class="card-link card-remove-link" (click)="goDetails()">Törlés</a>-->
   </div>
 </div>
