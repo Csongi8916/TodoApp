@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApp.Helpers;
 
 namespace TodoApp.Repositories
 {
@@ -13,7 +14,7 @@ namespace TodoApp.Repositories
 
         Task<bool> SaveAll();
 
-        Task<IEnumerable<TodoItem>> GetTodos();
+        Task<PageList<TodoItem>> GetTodos(TodoParams todoParams);
 
         Task<TodoItem> GetTodo(string id);
     }

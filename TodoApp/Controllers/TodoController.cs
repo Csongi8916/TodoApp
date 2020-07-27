@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Dtos;
+using TodoApp.Helpers;
 using TodoApp.Repositories;
 
 namespace TodoApp.Controllers
@@ -24,10 +25,11 @@ namespace TodoApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery]TodoParams todoParams)
         {
-            var todos = await _repo.GetTodos();
+            var todos = await _repo.GetTodos(todoParams);
             var todoDtos = _mapper.Map<IEnumerable<TodoListDto>>(todos);
+            Response.AddPagination(todos.CurrentPage, todos.PageSize, todos.TotalCount, todos.TotalPage);
             return Ok(todoDtos);
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Data;
+using TodoApp.Helpers;
 
 namespace TodoApp.Repositories
 {
@@ -30,9 +31,10 @@ namespace TodoApp.Repositories
             return await _ctx.Todos.SingleOrDefaultAsync(t => t.Id == id);
         }
 
-        public async Task<IEnumerable<TodoItem>> GetTodos()
+        public async Task<PageList<TodoItem>> GetTodos(TodoParams todoParams)
         {
-            return await _ctx.Todos.ToListAsync();
+            var todos = _ctx.Todos;
+            return await PageList<TodoItem>.CreateAsync(todos, todoParams.PageNumber, todoParams.PageSize);
         }
 
         public async Task<bool> SaveAll()

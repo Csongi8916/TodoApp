@@ -7,10 +7,13 @@ import { Todo } from '../models/todo';
 
 @Injectable()
 export class TodoListResolver implements Resolve<Todo[]> {
+  pageNumber = 1;
+  pageSize = 25;
+
   constructor(private todoService: TodoService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Todo[]> {
-    return this.todoService.getTodos().pipe(
+    return this.todoService.getTodos(this.pageNumber, this.pageSize).pipe(
       catchError((error) => {
         console.log(error);
         this.router.navigate(['/']);
