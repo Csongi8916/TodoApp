@@ -1,0 +1,17 @@
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.card-finished {
+  border-color: green;
+  color: green;
+}
+
+.card-inprogress {
+  border-color: rgb(34, 105, 238);
+  color: rgb(34, 105, 238);
+}
+
+.card-remove-link {
+  color: rgb(216, 44, 44);
+}

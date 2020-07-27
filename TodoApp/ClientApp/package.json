@@ -23,7 +23,6 @@
     "@angular/router": "8.2.12",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
-    "angular-svg-icon": "^10.0.0",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",

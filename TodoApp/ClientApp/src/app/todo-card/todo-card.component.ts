@@ -12,4 +12,8 @@ export class TodoCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  goDetails() {
+    alert('dasd');
+  }
 }
