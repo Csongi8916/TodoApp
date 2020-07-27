@@ -1,3 +1,17 @@
-<p>
-  todo-edit works!
-</p>
+<div class="container mt-4">
+  <form #editForm="ngForm" id="editForm" (ngSubmit)="sumbitTodo()">
+    <label for="title">Cím</label>
+    <input type="text" class="form-control mb-4" name="title" [(ngModel)]="todo.title" />
+    <label for="description">Részletek</label>
+    <textarea [(ngModel)]="todo.description" name="description" rows="6" class="form-control mb-4"> </textarea>
+    <div class="form-inline mb-4">
+      <label for="finish">Teljesített:</label>
+      <input type="checkbox" name="finish" [(ngModel)]="todo.isFinished" />
+    </div>
+    <div>
+      <button form="editForm" [disabled]="!editForm.dirty" class="btn btn-success">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

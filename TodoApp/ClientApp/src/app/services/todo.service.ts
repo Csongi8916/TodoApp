@@ -36,11 +36,19 @@ export class TodoService {
       );
   }
 
-  /*getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.baseUrl + 'todo');
-  }*/
-
   getTodo(id: string): Observable<Todo> {
     return this.http.get<Todo>(this.baseUrl + 'todo/' + id);
+  }
+
+  updateTodo(id: string, todo: Todo) {
+    return this.http.put(this.baseUrl + 'todo/' + id, todo);
+  }
+
+  createTodo(todo: Todo) {
+    return this.http.post(this.baseUrl + 'todo/', todo);
+  }
+
+  deleteTodo(id: string) {
+    return this.http.delete(this.baseUrl + 'todo/' + id);
   }
 }

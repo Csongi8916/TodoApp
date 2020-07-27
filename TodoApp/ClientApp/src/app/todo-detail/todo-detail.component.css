@@ -5,3 +5,7 @@
 .card-inprogress {
   color: rgb(34, 105, 238);
 }
+
+.description {
+  text-align: justify;
+}
