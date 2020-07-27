@@ -9,13 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TodoDetailComponent implements OnInit {
   todo: Todo;
+  isFinishedText: string;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    debugger;
     this.route.data.subscribe((data) => {
-      this.todo = data['users'];
+      this.todo = data['todo'];
+      this.isFinishedText = this.todo.isFinished ? 'Teljesített' : 'Folyamatban...';
     });
   }
 }

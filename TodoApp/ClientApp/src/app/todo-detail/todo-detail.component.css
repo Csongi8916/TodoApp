@@ -1,0 +1,7 @@
+.card-finished {
+  color: green;
+}
+
+.card-inprogress {
+  color: rgb(34, 105, 238);
+}

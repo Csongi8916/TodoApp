@@ -1,3 +1,16 @@
-<p>
-  todo-detail works!
-</p>
+<div class="container mt-4">
+  <div class="d-flex flex-column">
+    <div class="p-2 mb-1">
+      <h5>Cím:</h5>
+      <p>{{ todo.title }}</p>
+    </div>
+    <div class="p-2 mb-1">
+      <h5>Részletek:</h5>
+      <p>{{ todo.description }}</p>
+    </div>
+    <div class="p-2 mb-1">
+      <h5>Teljesítve:</h5>
+      <p [ngClass]="{ 'card-finished': todo.isFinished, 'card-inprogress': !todo.isFinished }">{{ isFinishedText }}</p>
+    </div>
+  </div>
+</div>

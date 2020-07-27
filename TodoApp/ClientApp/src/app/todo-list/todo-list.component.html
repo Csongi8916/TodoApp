@@ -1,4 +1,9 @@
 <div class="container mt-5 justify-content-center">
+  <div class="row mb-3">
+    <button class="btn btn-primary btn-create" [routerLink]="['/create']">
+      Új Todo
+    </button>
+  </div>
   <div class="row">
     <div *ngFor="let todo of todos" class="col-lg-4 col-sm-1">
       <app-todo-card [todo]="todo"></app-todo-card>

@@ -14,9 +14,18 @@ import { TodoDetailResolver } from './resolvers/todo-detail.resolver';
 import { TodoCardComponent } from './todo-card/todo-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { TodoEditComponent } from './todo-edit/todo-edit.component';
+import { TodoEditResolver } from './resolvers/todo-edit.resolver';
 
 @NgModule({
-  declarations: [AppComponent, NavMenuComponent, TodoListComponent, TodoCardComponent, TodoDetailComponent],
+  declarations: [
+    AppComponent,
+    NavMenuComponent,
+    TodoListComponent,
+    TodoCardComponent,
+    TodoDetailComponent,
+    TodoEditComponent,
+  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -25,7 +34,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
     BrowserAnimationsModule,
     PaginationModule.forRoot(),
   ],
-  providers: [TodoListResolver, TodoDetailResolver],
+  providers: [TodoListResolver, TodoDetailResolver, TodoEditResolver],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
