@@ -9,20 +9,13 @@ import { TodoService } from '../services/todo.service';
 })
 export class TodoCardComponent implements OnInit {
   @Input() todo: Todo;
-  // @Output() delete: EventEmitter<Todo> = new EventEmitter<Todo>();
+  @Output() delete: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {}
 
   deleteTodo() {
-    this.todoService.deleteTodo(this.todo.id).subscribe(
-      (next) => {
-        console.log('Todo deleted successfully!');
-      },
-      (error) => {
-        console.log('error');
-      },
-    );
+    this.delete.emit(this.todo);
   }
 }

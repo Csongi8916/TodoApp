@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div *ngFor="let todo of todos" class="col-lg-4 col-sm-1">
-      <app-todo-card [todo]="todo"></app-todo-card>
+      <app-todo-card [todo]="todo" (delete)="deleteCourse($event)"></app-todo-card>
     </div>
   </div>
 
