@@ -14,8 +14,7 @@ export class TodoService {
 
   constructor(private http: HttpClient) {}
 
-  getTodos(page?, itemsPerPage?, finishState?, searchedTitle?: string): Observable<PaginatedResult<Todo[]>> {
-    const paginatedResult: PaginatedResult<Todo[]> = new PaginatedResult<Todo[]>();
+  private getParams(page?, itemsPerPage?, finishState?, searchedTitle?): HttpParams {
     let params = new HttpParams();
 
     if (page != null && itemsPerPage != null) {
@@ -28,6 +27,13 @@ export class TodoService {
     if (searchedTitle != null) {
       params = params.append('title', searchedTitle);
     }
+
+    return params;
+  }
+
+  getTodos(page?, itemsPerPage?, finishState?, searchedTitle?): Observable<PaginatedResult<Todo[]>> {
+    const paginatedResult: PaginatedResult<Todo[]> = new PaginatedResult<Todo[]>();
+    const params = this.getParams(page, itemsPerPage, finishState, searchedTitle);
 
     return this.http
       .get<Todo[]>(this.baseUrl + 'todo', { observe: 'response', params })

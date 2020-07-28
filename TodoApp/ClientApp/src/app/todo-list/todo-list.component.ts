@@ -20,7 +20,6 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.isFinished);
     this.route.data.subscribe((data) => {
       this.todos = data['todos'].result;
       this.pagination = data['todos'].pagination;

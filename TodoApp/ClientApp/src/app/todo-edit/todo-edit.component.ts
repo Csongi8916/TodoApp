@@ -39,12 +39,11 @@ export class TodoEditComponent implements OnInit {
   updateTodo(id: string) {
     this.todoService.updateTodo(id, this.todo).subscribe(
       (next) => {
-        console.log('Profile updated successfully!');
-        // this.editForm.reset(this.todo);
+        console.log('Todo updated successfully!');
         this.router.navigate(['/']);
       },
       (error) => {
-        console.log('Profile updated successfully!');
+        console.log('Todo updated successfully!');
       },
     );
   }
@@ -52,12 +51,11 @@ export class TodoEditComponent implements OnInit {
   createTodo() {
     this.todoService.createTodo(this.todo).subscribe(
       (next) => {
-        console.log('Profile updated successfully!');
-        // this.editForm.reset(this.todo);
+        console.log('Todo created successfully!');
         this.router.navigate(['/']);
       },
       (error) => {
-        console.log('Profile updated successfully!');
+        console.log('Todo created successfully!');
       },
     );
   }
