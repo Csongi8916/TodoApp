@@ -19,3 +19,12 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+input[type='checkbox'],
+input[type='radio'] {
+  margin-left: 10px;
+  top: 0.8rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  cursor: pointer;
+}

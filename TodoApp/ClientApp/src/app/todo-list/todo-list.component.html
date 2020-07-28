@@ -1,8 +1,24 @@
 <div class="container mt-5 justify-content-center">
-  <div class="row mb-3">
-    <button class="btn btn-primary btn-create" [routerLink]="['/create']">
-      Új Todo
-    </button>
+  <div class="clearfix mb-3">
+    <div class="float-left">
+      <button class="btn btn-primary btn-create" [routerLink]="['/create']">
+        Új Todo
+      </button>
+    </div>
+    <form class="float-right form-inline" #form="ngForm" (ngSubmit)="loadTodos()" novalidate>
+      <label for="finish">Teljesített:</label>
+      <input type="radio" name="finished" value="true" class="mr-4" [(ngModel)]="isFinished" />
+      <label for="in-progress">Folyamatban:</label>
+      <input type="radio" name="finished" value="false" class="mr-4" [(ngModel)]="isFinished" />
+      <label for="in-progress">Összes:</label>
+      <input type="radio" name="finished" class="mr-4" [(ngModel)]="isFinished" checked />
+      <label for="searchTerm">Keresés:</label>
+      <input class="form-control ml-2" type="text" name="searchTitle" [(ngModel)]="searchedTitle" />
+
+      <button type="submit" class="btn btn-primary" style="margin-left: 10px;">
+        Keresés
+      </button>
+    </form>
   </div>
   <div class="row">
     <div *ngFor="let todo of todos" class="col-lg-4 col-sm-1">

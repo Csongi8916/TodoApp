@@ -30,7 +30,7 @@ namespace TodoApp.Controllers
             var todos = await _repo.GetTodos(todoParams);
             var todoDtos = _mapper.Map<IEnumerable<TodoListDto>>(todos);
             Response.AddPagination(todos.CurrentPage, todos.PageSize, todos.TotalCount, todos.TotalPage);
-            return Ok(todoDtos);
+            return Ok(todoDtos.OrderBy(t => t.Title));
         }
 
         [HttpGet("{id}")]

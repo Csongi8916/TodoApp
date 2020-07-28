@@ -33,7 +33,17 @@ namespace TodoApp.Repositories
 
         public async Task<PageList<TodoItem>> GetTodos(TodoParams todoParams)
         {
-            var todos = _ctx.Todos;
+            var todos = _ctx.Todos.AsQueryable();
+
+            if (todoParams.IsFinished.HasValue)
+            {
+                todos = todos.Where(t => todoParams.IsFinished.Value ? t.IsFinished : !t.IsFinished);
+            }
+            if (!string.IsNullOrEmpty(todoParams.Title))
+            {
+                todos = todos.Where(t => t.Title.Contains(todoParams.Title));
+            }
+
             return await PageList<TodoItem>.CreateAsync(todos, todoParams.PageNumber, todoParams.PageSize);
         }
 
