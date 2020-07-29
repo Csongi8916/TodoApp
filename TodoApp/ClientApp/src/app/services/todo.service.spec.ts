@@ -6,11 +6,7 @@ import { TodoService } from './todo.service';
 describe('Service: Todo', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TodoService]
+      providers: [TodoService],
     });
   });
-
-  it('should ...', inject([TodoService], (service: TodoService) => {
-    expect(service).toBeTruthy();
-  }));
 });

@@ -3,8 +3,6 @@ import { Todo } from '../models/todo';
 import { TodoService } from '../services/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from '../models/pagination';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-list',
