@@ -40,6 +40,18 @@ namespace TodoApp.Tests
         }
 
         [Test]
+        public async Task Should_OkstatusCode_WhenGetTodos()
+        {
+            var testTodoParams = GetTestTodoParams(1, 25, "", false);
+            _mockRepo.Setup(repo => repo.GetTodos(testTodoParams)).ReturnsAsync(GetTestTodos());
+            var controller = new TodoController(_mockRepo.Object, _mockMapper.Object);
+            var result = await controller.Get(testTodoParams);
+            var okResult = result as OkObjectResult;
+            Assert.IsNotNull(okResult);
+            Assert.AreEqual(200, okResult.StatusCode);
+        }
+
+        [Test]
         public async Task Should_StatusCode201_WhenCreateTodo()
         {
             _mockRepo.Setup(repo => repo.Add(GetTestTodo()));
@@ -65,7 +77,7 @@ namespace TodoApp.Tests
 
             Assert.IsNotNull(notFoundResult);
             Assert.AreEqual(404, notFoundResult.StatusCode);
-        } 
+        }
 
         private TodoDetailedDto CreateTestTodoDetailedDto()
         {
@@ -97,6 +109,61 @@ namespace TodoApp.Tests
                 Title = title,
                 IsFinished = isFinished
             };
+        }
+
+        private PageList<TodoItem> GetTestTodos()
+        {
+            var todos = new List<TodoItem>();
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 1234",
+                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+                IsFinished = false
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 212389",
+                Description = "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+                IsFinished = false
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 12974",
+                Description = "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
+                IsFinished = false
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 3447",
+                Description = "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
+                IsFinished = false
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 9999",
+                Description = " In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.",
+                IsFinished = true
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat 1357",
+                Description = "Nullam dictum felis eu pede mollis pretium. Integer tincidunt.",
+                IsFinished = true
+            });
+            todos.Add(new TodoItem()
+            {
+                Id = "4bbcfda8-b2bc-4e46-a174-f4c8cc001596",
+                Title = "Teszt Feladat",
+                Description = "Cras dapibus. Vivamus elementum semper nisi. ",
+                IsFinished = true
+            });
+            return PageList<TodoItem>.CreateAsync(todos.AsQueryable(), 1, 25).Result;
         }
     }
 }

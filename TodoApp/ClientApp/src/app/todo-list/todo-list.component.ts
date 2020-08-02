@@ -43,7 +43,7 @@ export class TodoListComponent implements OnInit {
       );
   }
 
-  deleteCourse(event) {
+  deleteTodo(event) {
     this.todoService.deleteTodo(event.id).subscribe(
       (next) => {
         const index: number = this.todos.findIndex((x) => x.id === event.id);

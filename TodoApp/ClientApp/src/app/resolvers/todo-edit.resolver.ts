@@ -6,10 +6,10 @@ import { TodoService } from '../services/todo.service';
 import { Todo } from '../models/todo';
 
 @Injectable()
-export class TodoEditResolver implements Resolve<Todo[]> {
+export class TodoEditResolver implements Resolve<Todo> {
   constructor(private todoService: TodoService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Todo[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<Todo> {
     return this.todoService.getTodo(route.params['id']).pipe(
       catchError((error) => {
         console.log(error);
