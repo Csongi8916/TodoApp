@@ -57,6 +57,9 @@ namespace TodoApp.Controllers
         public async Task<IActionResult> UpdateTodo(string id, TodoDetailedDto todoDetailedDto)
         {
             var todo = await _repo.GetTodo(id);
+            if (todo == null)
+                return NotFound();
+
             _mapper.Map(todoDetailedDto, todo);
 
             if (await _repo.SaveAll())
@@ -70,9 +73,7 @@ namespace TodoApp.Controllers
         {
             var todo = await _repo.GetTodo(id);
             if (todo == null)
-            {
                 return NotFound();
-            }
 
             _repo.Delete(todo);
             if (await _repo.SaveAll())
